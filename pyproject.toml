@@ -6,11 +6,13 @@ authors = [
     {name = "taketo44",email = "take1044da@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
+packages = [{include = "dream_tracker", from = "src"}]
 dependencies = [
     "discord-py (>=2.5.2,<3.0.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
-    "google-generativeai (>=0.8.5,<0.9.0)"
+    "google-generativeai (>=0.8.5,<0.9.0)",
+    "firebase-admin (>=6.9.0,<7.0.0)"
 ]
 
 
