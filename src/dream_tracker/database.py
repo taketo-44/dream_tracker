@@ -1,15 +1,19 @@
+import os
+import firebase_admin
+from firebase_admin import firestore, credentials
+
+
 try:
     # Attempt to get the path from an environment variable for better security
 
     # Example: SERVICE_ACCOUNT_KEY_PATH = 'path/to/your/serviceAccountKey.json'
     SERVICE_ACCOUNT_KEY_PATH = os.environ.get('FIREBASE_SERVICE_ACCOUNT_KEY', 'serviceAccountKey.json')
-
     if not os.path.exists(SERVICE_ACCOUNT_KEY_PATH):
         print(f"ERROR: Firebase service account key not found at {SERVICE_ACCOUNT_KEY_PATH}")
         db = None # Set db to None if initialization fails
     else:
         cred = credentials.Certificate(SERVICE_ACCOUNT_KEY_PATH)
-        firebase_admin.initialize_app(cred)
+        app = firebase_admin.initialize_app(cred)
         db = firestore.client()
         print("Firebase initialized successfully.")
 
