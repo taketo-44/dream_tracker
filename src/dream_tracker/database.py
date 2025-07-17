@@ -13,7 +13,6 @@ try:
         db = None # Set db to None if initialization fails
     else:
         cred = credentials.Certificate(SERVICE_ACCOUNT_KEY_PATH)
-        app = firebase_admin.initialize_app(cred)
         db = firestore.client()
         print("Firebase initialized successfully.")
 

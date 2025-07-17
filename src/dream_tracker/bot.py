@@ -31,7 +31,7 @@ async def on_message(message):
 
     if message.content.startswith('!goal'):
         #set a goal to achieve and save the goal into the database
-        await message.channel.send("Got it! I'm saving a goal to ahieve")
+        await message.channel.send("Got it! I'm saving a goal to achieve")
         try:
             # Extract the content of the message after the `!goal ` command
             goal = message.content[6:].strip()  # Get everything after "!goal "
@@ -65,8 +65,8 @@ async def on_message(message):
         try:
             # Retrieve the goal and situation from the database
             user_data = get_user_data(user_id)
-            goal = user_data['goal']
-            situation = user_data['situation']
+            goal = user_data['goal'] if 'goal' in user_data else 'Nothing added so far'
+            situation = user_data['situation'] if 'situation' in user_data else 'Nothing added so far'
             
             if not goal or not situation:
                 await message.channel.send("You haven't set a goal or situation yet. Use `!goal` and `!situation` to set them.")

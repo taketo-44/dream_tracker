@@ -1,6 +1,10 @@
 import google.generativeai as genai
 
-model = genai.GenerativeModel('gemini-2.0-flash')
+try:
+    model = genai.GenerativeModel('gemini-2.0-flash')
+except Exception as e:
+    print(f"Failed to initialise gemini model: {e}")
+
 
 async def generate_plan_with_gemini(goal, situation):
     """
