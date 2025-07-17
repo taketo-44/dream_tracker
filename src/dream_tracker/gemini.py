@@ -1,12 +1,18 @@
 import google.generativeai as genai
 
+GEMINI_MODEL = 'gemini-2.0-flash'
+try:
+    model = genai.GenerativeModel(GEMINI_MODEL)
+except Exception as e:
+    print(f"Failed to initialise gemini model: {e}")
+
+
 async def generate_plan_with_gemini(goal, situation):
     """
     Generates a structured plan using the Gemini API.
     """
     try:
         # For this example, we'll use the gemini-pro model
-        model = genai.GenerativeModel('gemini-pro')
 
         # This is the prompt we send to the AI. It's carefully crafted to ask the AI
         # to act as a coach and provide a structured response.
@@ -51,7 +57,6 @@ async def generate_todo_with_gemini(goal, situation):
     """
     try:
         # For this example, we'll use the gemini-pro model
-        model = genai.GenerativeModel('gemini-pro')
 
         # This is the prompt we send to the AI. It's carefully crafted to ask the AI
         # to act as a coach and provide a structured response.
@@ -69,8 +74,8 @@ async def generate_todo_with_gemini(goal, situation):
 
         Please provide the following in your response, using clear headings:
 
-        ### ✅ Daily To-Dos
-        Provide a list of actionable daily tasks to start working towards the first short-term target.
+        ### ✅ To-Dos
+        Provide a list of actionable tasks to start working towards the first short-term target for today.
 
         """
 
@@ -91,7 +96,6 @@ async def generate_motivator_with_gemini(goal, situation):
     """
     try:
         # For this example, we'll use the gemini-pro model
-        model = genai.GenerativeModel('gemini-pro')
 
         # This is the prompt we send to the AI. It's carefully crafted to ask the AI
         # to provide a motivational message.
