@@ -1,7 +1,8 @@
 import google.generativeai as genai
 
+GEMINI_MODEL = 'gemini-2.0-flash'
 try:
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel(GEMINI_MODEL)
 except Exception as e:
     print(f"Failed to initialise gemini model: {e}")
 
